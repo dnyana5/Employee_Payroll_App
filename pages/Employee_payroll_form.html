@@ -23,10 +23,10 @@
           <!-------UC 2--------->
           <div class="form-head">Employee Payroll Form</div>
           <div class="row-content">
-              <label class="label text" for="name">Name</label>
-              <input class="input" type="text" name="name" id="name" 
-                      placeholder="Enter name here" required>
-          </div>
+            <label class="label text" for="text">Name</label>
+            <input class="input" type="text" name="text" id="text" placeholder="Enter name here" required>
+            <error-output class="text-error" for="text"></error-output>
+        </div>
            <!-------UC 3--------->
           <div class="row-content">
             <label class="label text" for="profile">Profile Image</label>
@@ -153,8 +153,17 @@
     </div>
     </form>
   </div>
-   <!-------UC 9--------->
-    <script src="../js/Payroll-Form.js"></script>
-    <script src="../js/Employee-Payroll-Data.js"></script>
+  <script>
+    const text = document.querySelector('#text');
+    const textError = document.querySelector('.text-error');
+    text.addEventListener('input',function(){
+      let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+      if (nameRegex.test(text.value))
+       textError.textContent =" ";
+     else textError.textContent = "Name is Incorrect";
+    });
+    </script>
+   <script type="text/javascript" src="../js/PayRoll-Form.js"></script>
+   <script type="text/javascript" src="../js/Employee-PayRoll-Data.js"></script>
 </body>
 </html>

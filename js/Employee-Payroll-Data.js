@@ -14,7 +14,7 @@ class EmployeePayrollData {
         return this._name;
     }
     set name(name) {
-        this._name = name;
+       this._name=name; 
     }
 
     get profilePic() {
@@ -56,15 +56,18 @@ class EmployeePayrollData {
         return this._startDate;
     }
     set startDate(startDate) {
-        this._startDate = startDate;
-    }
-
-    //method
-    toString() {
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        const empDate = !this.startDate ? "undefined" : this.startDate.toLocalDateString("en-US", options);
-        return "id = "+this.id +", name=" + this.name + ", gender=" + this.gender + 
-                ", profilePic=" + this.profilePic + ", department=" + this.department +
-                ", salary=" + this.salary + ", startDate=" + empDate + ", notes=" + this._notes;
+        if(startDate.getMonth() <= (new Date()).getMonth()  && startDate.getDay() <= (new Date()).getDay() && startDate.getFullYear() <= (new Date()).getFullYear())
+            this._startDate = startDate;
+        else{ 
+            throw "Invalid Start date ";
+        }
+}
+//method
+toString() {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const empDate = !this.startDate ? "undefined" : this.startDate.toLocalDateString("en-US", options);
+    return "id = "+this.id +", name=" + this.name + ", gender=" + this.gender + 
+            ", profilePic=" + this.profilePic + ", department=" + this.department +
+            ", salary=" + this.salary + ", startDate=" + empDate + ", notes=" + this._notes;
     }
 }
