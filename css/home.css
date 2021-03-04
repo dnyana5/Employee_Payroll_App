@@ -38,6 +38,7 @@ body {
 .payroll {
     color: #42515f;
 }
+
 *{box-sizing: border-box;}
 
 .main-content{
@@ -89,3 +90,4 @@ body {
     display: inline-block;
     text-align: center;
 }
+

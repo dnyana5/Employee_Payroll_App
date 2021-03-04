@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', (event) => {
     const name = document.querySelector('#name');
     const textError = document.querySelector('.text-error');
-    name.addEventListener('input', function() {
+    name.addEventListener('input', function(){
         if (name.value.length == 0) {
             textError.textContent = "";
             return;
@@ -95,15 +95,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   const resetForm = () => {
-    setValue('#name', ' ');
+    setValue('#name', '');
     unsetSelectedValue('[name=profile]');
     unsetSelectedValue('[name=gender]');
     unsetSelectedValue('[name=department]');
-    setValue('#salary', '');
+    setTextValue('#salary', '');
     setValue('#notes', '');
     setValue('#day', '1');
     setValue('#month', 'January');
-    setValue('#year', '2020');
+    setValue('#year', '2021');
 }
 
 const unsetSelectedValues = (propertyValue) => {
@@ -122,4 +122,3 @@ const setValue = (id, value) => {
     const element = document.querySelector(id);
     element.value = value;
 }
-  
