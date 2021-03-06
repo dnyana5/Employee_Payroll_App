@@ -25,6 +25,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             dateError.textContent = e;
         }
     });
+
   
     const salary = document.querySelector('#salary');
     const output = document.querySelector('.salary-output');
@@ -68,9 +69,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     employeePayrollData.department = getSelectedValues('[name=department]');
     employeePayrollData.salary = getInputValueById('#salary');
     employeePayrollData.notes = getInputValueById('#notes');
-    let date = getInputValueById('#day')+" "+getInputValueById('#month')+" "+
+    let date = getInputValueById('#day')+" "+ getInputValueById('#month')+" "+
                 getInputValueById('#year');
-      employeePayrollData.date =new Date(Date.parse(date));
+      employeePayrollData.startDate = new Date(Date.parse(date));
     alert(employeePayrollData.toString());
     return employeePayrollData;
   }
