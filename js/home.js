@@ -1,4 +1,4 @@
-let empPayrollList;
+/*let empPayrollList;*/
 window.addEventListener('DOMContentLoaded', (event)=>{
   empPayrollList = getEmployeePayrollDataFromStorage();
   document.querySelector(".emp-count").textContent = empPayrollList.length;
@@ -45,7 +45,7 @@ const getDeptHtml = (deptList) => {
   }
   return deptHtml;
 }
-
+/*
 const remove = (node) => {
   let empPayrollData = empPayrollList.find(empData => empData._id == node.id);
   if(!empPayrollData) return;
@@ -56,4 +56,4 @@ const remove = (node) => {
   localStorage.setItem("EmployeePayrollList", JSON.stringify(empPayrollList));
   document.querySelector('.emp-count').textContent = empPayrollList.length;
   createInnerHtml();
-}
+}*/
