@@ -1,7 +1,7 @@
 class EmployeePayrollData {
 
     //getter and setter method
-    get id() { 
+  get id() { 
      return this._id; 
   }
   set id(id) { 
@@ -70,9 +70,19 @@ class EmployeePayrollData {
    const options = {year: 'numeric', month: 'short', day: 'numeric'};
      const empDate = !this.startDate ? "undefined" : 
                      this.startDate.toLocalDateString('en-GB', options);
+     let now = new Date();
+     if(startDate > now ) throw 'Start Date is a Future Date'
+     else
+     this._startDate = startDate;
+  }
+  
+  //method
+  toString() {
+     const options = { year: 'numeric', month: 'short', day: 'numeric' };
+     const empDate = !this.startDate ? "undefined" : this.startDate.toLocalDateString("en-GB", options);
      return "id = "+this.id +", name=" + this.name + ", gender=" + this.gender + 
              ", profilePic=" + this.profilePic + ", department=" + this.department +
              ", salary=" + this.salary + ", startDate=" + empDate + ", notes=" + this._notes;
    }
-  }
+}
   

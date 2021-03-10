@@ -1,6 +1,5 @@
 let isUpdate = false;
 let employeePayrollObj = {};
-
 window.addEventListener('DOMContentLoaded', (event) => {
     const name = document.querySelector('#name');
     const textError = document.querySelector('.text-error');
@@ -20,9 +19,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const date = document.querySelector('#date');
     const dateError = document.querySelector('.date-error');
     date.addEventListener('input', function() {
-        let startDate = document.querySelector('#day').value+"-"+document.querySelector('#month').value+"-"+document.querySelector('#year').value;
+      let startDate = document.querySelector('#day').value+" "+document.querySelector('#month').value+" "+document.querySelector('#year').value;
         try{
-            (new EmployeePayrollData()).startDate =new Date(Date.parse(startDate));
+            (new EmployeePayrollData()).startDate = new Date(Date.parse(startDate));
             dateError.textContent = "";
         }catch (e) {
             dateError.textContent = e;
@@ -35,9 +34,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     output.textContent = salary.value;
     salary.addEventListener('input',function(){
         output.textContent = salary.value;
-    });
-    checkForUpdate();
+    })
   });
+  
   
   const save = () => {
     try {
@@ -55,7 +54,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     if(employeePayrollList != undefined)
         employeePayrollList.push(employeePayroll);
     else
-        employeePayrollList = [employeePayroll];
+      employeePayrollList = [employeePayroll];
     alert(employeePayrollList.toString());
     localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
 }
@@ -75,10 +74,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
     employeePayrollData.notes = getInputValueById('#notes');
     let date = getInputValueById('#day')+" "+ getInputValueById('#month')+" "+
                 getInputValueById('#year');
+
       employeePayrollData.startDate = new Date(Date.parse(date));
+
+    try{
+        employeePayrollData.date = new Date(Date.parse(date));
+        console.log(new Date(Date.parse(date)));
+    }catch(e){
+      setTextValue('.date-error',e);
+      throw e;
+    }
+
     alert(employeePayrollData.toString());
     return employeePayrollData;
-  }
+    }
   
   const getSelectedValues = (propertyValue) => {
     let allItems = document.querySelectorAll(propertyValue);
