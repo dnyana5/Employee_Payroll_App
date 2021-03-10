@@ -75,6 +75,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 getInputValueById('#year');
     try{
         employeePayrollData.date = new Date(Date.parse(date));
+        console.log(new Date(Date.parse(date)));
     }catch(e){
       setTextValue('.date-error',e);
       throw e;
