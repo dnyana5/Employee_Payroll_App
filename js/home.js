@@ -1,10 +1,9 @@
-/*let empPayrollList;*/
+let empPayrollList;
 window.addEventListener('DOMContentLoaded', (event)=>{
   empPayrollList = getEmployeePayrollDataFromStorage();
   document.querySelector(".emp-count").textContent = empPayrollList.length;
   createInnerHtml();
   localStorage.removeItem('editEmp');
-
 });
 
 const getEmployeePayrollDataFromStorage = () => { 
@@ -27,21 +26,12 @@ const createInnerHtml = () => {
     <td>${getDeptHtml(empPayrollData._department)}</td>
     <td>${empPayrollData._salary}</td>
     <td>${stringifyDate(empPayrollData._startDate)}</td>
-<<<<<<< HEAD
     <td>
-        <img id="${empPayrollData._id}" onclick="remove(this)" alt="delete"
-            src="../assets/icon/delete-black-18dp.svg">
-        <img id="${empPayrollData._id}"  alt="edit" onclick="update(this)"
-            src="../assets/icon/create-black-18dp.svg">
-    </td>
-=======
-      <td>
         <img id="${empPayrollData._id}" onclick="remove(this)"
             src="../assets/icon/delete-black-18dp.svg"  alt="delete">
         <img id="${empPayrollData._id}" onclick="update(this)"
-          src="../assets/icon/create-black-18dp.svg"  alt="edit">
+            src="../assets/icon/create-black-18dp.svg"  alt="edit">
       </td>
->>>>>>> UC22_RemoveEmployeeDetails
    </tr>
    `;
   }
@@ -55,29 +45,25 @@ const getDeptHtml = (deptList) => {
   }
   return deptHtml;
 }
-<<<<<<< HEAD
-/*
-const remove = (node) => {
-  let empPayrollData = empPayrollList.find(empData => empData._id == node.id);
-  if(!empPayrollData) return;
-  const index = empPayrollList
-                .map(empData => empData._id)
-                .indexOf(empPayrollData._id);
-=======
+
 const remove = (node) => {
   let empPayrollData = empPayrollList.find(empData => empData._id == node._id);
   if(!empPayrollData) return;
   const index = empPayrollList
                   .map(empData => empData._id)
                   .indexOf(empPayrollData._id);
->>>>>>> UC22_RemoveEmployeeDetails
   empPayrollList.splice(index, 1);
   localStorage.setItem("EmployeePayrollList", JSON.stringify(empPayrollList));
   document.querySelector('.emp-count').textContent = empPayrollList.length;
   createInnerHtml();
-<<<<<<< HEAD
-}*/
-=======
-  
+
 }
->>>>>>> UC22_RemoveEmployeeDetails
+
+const update = (node) => {
+  console.log("in update");
+  let empPayrollData = empPayrollList.find(empData => empData._id == node._id)
+  if (!empPayrollData) return;
+  localStorage.setItem('editEmp', JSON.stringify(empPayrollData))
+  window.location.replace(site_properties.add_emp_payroll_pages); 
+}
+
